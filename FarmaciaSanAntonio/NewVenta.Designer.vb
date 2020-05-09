@@ -25,11 +25,12 @@ Partial Class NewVenta
         Me.components = New System.ComponentModel.Container()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.DataMedi = New System.Windows.Forms.DataGridView()
-        Me.ESTADODataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.MEDICAMENTOSBindingSource4 = New System.Windows.Forms.BindingSource(Me.components)
-        Me.FarmSAntonioVentasDataSet3 = New FarmaciaSanAntonio.FarmSAntonioVentasDataSet3()
         Me.btndetvmed = New System.Windows.Forms.Button()
         Me.btnre9 = New System.Windows.Forms.Button()
+        Me.MEDICAMENTOSBindingSource5 = New System.Windows.Forms.BindingSource(Me.components)
+        Me.FarmSAntonioVentasDataVTAMED = New FarmaciaSanAntonio.FarmSAntonioVentasDataVTAMED()
+        Me.MEDICAMENTOSBindingSource4 = New System.Windows.Forms.BindingSource(Me.components)
+        Me.FarmSAntonioVentasDataSet3 = New FarmaciaSanAntonio.FarmSAntonioVentasDataSet3()
         Me.MEDICAMENTOSBindingSource3 = New System.Windows.Forms.BindingSource(Me.components)
         Me.FarmSAntonioDataSet13 = New FarmaciaSanAntonio.FarmSAntonioDataSet13()
         Me.MEDICAMENTOSBindingSource2 = New System.Windows.Forms.BindingSource(Me.components)
@@ -38,12 +39,6 @@ Partial Class NewVenta
         Me.addProd = New System.Windows.Forms.Button()
         Me.btnre = New System.Windows.Forms.Button()
         Me.DataProd = New System.Windows.Forms.DataGridView()
-        Me.CVEPRODDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.NOMPDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DESCRIPDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PRECIOVTAPDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.EXISTENCIASPDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ESTADODataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PRODUCTOSBindingSource2 = New System.Windows.Forms.BindingSource(Me.components)
         Me.FarmSAntonioVentasDataSet1 = New FarmaciaSanAntonio.FarmSAntonioVentasDataSet1()
         Me.PRODUCTOSBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
@@ -59,7 +54,6 @@ Partial Class NewVenta
         Me.btnCoVta = New System.Windows.Forms.Button()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.ctpag = New System.Windows.Forms.TextBox()
         Me.totalvta = New System.Windows.Forms.TextBox()
         Me.cvvta = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
@@ -80,11 +74,12 @@ Partial Class NewVenta
         Me.PRODUCTOSBindingSource3 = New System.Windows.Forms.BindingSource(Me.components)
         Me.PRODUCTOSTableAdapter2 = New FarmaciaSanAntonio.FarmSAntonioVentasDataSet2TableAdapters.PRODUCTOSTableAdapter()
         Me.MEDICAMENTOSTableAdapter = New FarmaciaSanAntonio.FarmSAntonioVentasDataSet3TableAdapters.MEDICAMENTOSTableAdapter()
-        Me.FarmSAntonioVentasDataVTAMED = New FarmaciaSanAntonio.FarmSAntonioVentasDataVTAMED()
-        Me.MEDICAMENTOSBindingSource5 = New System.Windows.Forms.BindingSource(Me.components)
         Me.MEDICAMENTOSTableAdapter1 = New FarmaciaSanAntonio.FarmSAntonioVentasDataVTAMEDTableAdapters.MEDICAMENTOSTableAdapter()
+        Me.ctpag = New System.Windows.Forms.ComboBox()
         Me.Panel3.SuspendLayout()
         CType(Me.DataMedi, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.MEDICAMENTOSBindingSource5, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.FarmSAntonioVentasDataVTAMED, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MEDICAMENTOSBindingSource4, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.FarmSAntonioVentasDataSet3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MEDICAMENTOSBindingSource3, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -104,8 +99,6 @@ Partial Class NewVenta
         CType(Me.data1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.FarmSAntonioVentasDataSet2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PRODUCTOSBindingSource3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.FarmSAntonioVentasDataVTAMED, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.MEDICAMENTOSBindingSource5, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Panel3
@@ -123,33 +116,12 @@ Partial Class NewVenta
         '
         Me.DataMedi.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.DataMedi.AutoGenerateColumns = False
         Me.DataMedi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataMedi.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ESTADODataGridViewTextBoxColumn2})
-        Me.DataMedi.DataSource = Me.MEDICAMENTOSBindingSource5
         Me.DataMedi.Location = New System.Drawing.Point(6, 7)
         Me.DataMedi.Name = "DataMedi"
         Me.DataMedi.RowHeadersWidth = 62
         Me.DataMedi.Size = New System.Drawing.Size(653, 294)
         Me.DataMedi.TabIndex = 3
-        '
-        'ESTADODataGridViewTextBoxColumn2
-        '
-        Me.ESTADODataGridViewTextBoxColumn2.DataPropertyName = "ESTADO"
-        Me.ESTADODataGridViewTextBoxColumn2.HeaderText = "ESTADO"
-        Me.ESTADODataGridViewTextBoxColumn2.MinimumWidth = 8
-        Me.ESTADODataGridViewTextBoxColumn2.Name = "ESTADODataGridViewTextBoxColumn2"
-        Me.ESTADODataGridViewTextBoxColumn2.Width = 150
-        '
-        'MEDICAMENTOSBindingSource4
-        '
-        Me.MEDICAMENTOSBindingSource4.DataMember = "MEDICAMENTOS"
-        Me.MEDICAMENTOSBindingSource4.DataSource = Me.FarmSAntonioVentasDataSet3
-        '
-        'FarmSAntonioVentasDataSet3
-        '
-        Me.FarmSAntonioVentasDataSet3.DataSetName = "FarmSAntonioVentasDataSet3"
-        Me.FarmSAntonioVentasDataSet3.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'btndetvmed
         '
@@ -168,6 +140,26 @@ Partial Class NewVenta
         Me.btnre9.TabIndex = 1
         Me.btnre9.Text = "REGRESAR"
         Me.btnre9.UseVisualStyleBackColor = True
+        '
+        'MEDICAMENTOSBindingSource5
+        '
+        Me.MEDICAMENTOSBindingSource5.DataMember = "MEDICAMENTOS"
+        Me.MEDICAMENTOSBindingSource5.DataSource = Me.FarmSAntonioVentasDataVTAMED
+        '
+        'FarmSAntonioVentasDataVTAMED
+        '
+        Me.FarmSAntonioVentasDataVTAMED.DataSetName = "FarmSAntonioVentasDataVTAMED"
+        Me.FarmSAntonioVentasDataVTAMED.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'MEDICAMENTOSBindingSource4
+        '
+        Me.MEDICAMENTOSBindingSource4.DataMember = "MEDICAMENTOS"
+        Me.MEDICAMENTOSBindingSource4.DataSource = Me.FarmSAntonioVentasDataSet3
+        '
+        'FarmSAntonioVentasDataSet3
+        '
+        Me.FarmSAntonioVentasDataSet3.DataSetName = "FarmSAntonioVentasDataSet3"
+        Me.FarmSAntonioVentasDataSet3.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'MEDICAMENTOSBindingSource3
         '
@@ -218,63 +210,12 @@ Partial Class NewVenta
         '
         'DataProd
         '
-        Me.DataProd.AutoGenerateColumns = False
         Me.DataProd.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataProd.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.CVEPRODDataGridViewTextBoxColumn, Me.NOMPDataGridViewTextBoxColumn, Me.DESCRIPDataGridViewTextBoxColumn, Me.PRECIOVTAPDataGridViewTextBoxColumn, Me.EXISTENCIASPDataGridViewTextBoxColumn, Me.ESTADODataGridViewTextBoxColumn})
-        Me.DataProd.DataSource = Me.PRODUCTOSBindingSource2
         Me.DataProd.Location = New System.Drawing.Point(7, 0)
         Me.DataProd.Name = "DataProd"
         Me.DataProd.RowHeadersWidth = 62
         Me.DataProd.Size = New System.Drawing.Size(653, 294)
         Me.DataProd.TabIndex = 0
-        '
-        'CVEPRODDataGridViewTextBoxColumn
-        '
-        Me.CVEPRODDataGridViewTextBoxColumn.DataPropertyName = "CVEPROD"
-        Me.CVEPRODDataGridViewTextBoxColumn.HeaderText = "CVEPROD"
-        Me.CVEPRODDataGridViewTextBoxColumn.MinimumWidth = 8
-        Me.CVEPRODDataGridViewTextBoxColumn.Name = "CVEPRODDataGridViewTextBoxColumn"
-        Me.CVEPRODDataGridViewTextBoxColumn.Width = 150
-        '
-        'NOMPDataGridViewTextBoxColumn
-        '
-        Me.NOMPDataGridViewTextBoxColumn.DataPropertyName = "NOMP"
-        Me.NOMPDataGridViewTextBoxColumn.HeaderText = "NOMP"
-        Me.NOMPDataGridViewTextBoxColumn.MinimumWidth = 8
-        Me.NOMPDataGridViewTextBoxColumn.Name = "NOMPDataGridViewTextBoxColumn"
-        Me.NOMPDataGridViewTextBoxColumn.Width = 150
-        '
-        'DESCRIPDataGridViewTextBoxColumn
-        '
-        Me.DESCRIPDataGridViewTextBoxColumn.DataPropertyName = "DESCRIP"
-        Me.DESCRIPDataGridViewTextBoxColumn.HeaderText = "DESCRIP"
-        Me.DESCRIPDataGridViewTextBoxColumn.MinimumWidth = 8
-        Me.DESCRIPDataGridViewTextBoxColumn.Name = "DESCRIPDataGridViewTextBoxColumn"
-        Me.DESCRIPDataGridViewTextBoxColumn.Width = 150
-        '
-        'PRECIOVTAPDataGridViewTextBoxColumn
-        '
-        Me.PRECIOVTAPDataGridViewTextBoxColumn.DataPropertyName = "PRECIOVTAP"
-        Me.PRECIOVTAPDataGridViewTextBoxColumn.HeaderText = "PRECIOVTAP"
-        Me.PRECIOVTAPDataGridViewTextBoxColumn.MinimumWidth = 8
-        Me.PRECIOVTAPDataGridViewTextBoxColumn.Name = "PRECIOVTAPDataGridViewTextBoxColumn"
-        Me.PRECIOVTAPDataGridViewTextBoxColumn.Width = 150
-        '
-        'EXISTENCIASPDataGridViewTextBoxColumn
-        '
-        Me.EXISTENCIASPDataGridViewTextBoxColumn.DataPropertyName = "EXISTENCIASP"
-        Me.EXISTENCIASPDataGridViewTextBoxColumn.HeaderText = "EXISTENCIASP"
-        Me.EXISTENCIASPDataGridViewTextBoxColumn.MinimumWidth = 8
-        Me.EXISTENCIASPDataGridViewTextBoxColumn.Name = "EXISTENCIASPDataGridViewTextBoxColumn"
-        Me.EXISTENCIASPDataGridViewTextBoxColumn.Width = 150
-        '
-        'ESTADODataGridViewTextBoxColumn
-        '
-        Me.ESTADODataGridViewTextBoxColumn.DataPropertyName = "ESTADO"
-        Me.ESTADODataGridViewTextBoxColumn.HeaderText = "ESTADO"
-        Me.ESTADODataGridViewTextBoxColumn.MinimumWidth = 8
-        Me.ESTADODataGridViewTextBoxColumn.Name = "ESTADODataGridViewTextBoxColumn"
-        Me.ESTADODataGridViewTextBoxColumn.Width = 150
         '
         'PRODUCTOSBindingSource2
         '
@@ -312,6 +253,7 @@ Partial Class NewVenta
         'panelTotal
         '
         Me.panelTotal.BackColor = System.Drawing.Color.MediumSeaGreen
+        Me.panelTotal.Controls.Add(Me.ctpag)
         Me.panelTotal.Controls.Add(Me.Label7)
         Me.panelTotal.Controls.Add(Me.iva)
         Me.panelTotal.Controls.Add(Me.Label6)
@@ -319,7 +261,6 @@ Partial Class NewVenta
         Me.panelTotal.Controls.Add(Me.btnCoVta)
         Me.panelTotal.Controls.Add(Me.Label4)
         Me.panelTotal.Controls.Add(Me.Label3)
-        Me.panelTotal.Controls.Add(Me.ctpag)
         Me.panelTotal.Controls.Add(Me.totalvta)
         Me.panelTotal.Location = New System.Drawing.Point(16, 124)
         Me.panelTotal.Name = "panelTotal"
@@ -386,13 +327,6 @@ Partial Class NewVenta
         Me.Label3.Size = New System.Drawing.Size(95, 13)
         Me.Label3.TabIndex = 7
         Me.Label3.Text = "TOTAL A PAGAR:"
-        '
-        'ctpag
-        '
-        Me.ctpag.Location = New System.Drawing.Point(127, 20)
-        Me.ctpag.Name = "ctpag"
-        Me.ctpag.Size = New System.Drawing.Size(121, 20)
-        Me.ctpag.TabIndex = 14
         '
         'totalvta
         '
@@ -537,19 +471,19 @@ Partial Class NewVenta
         '
         Me.MEDICAMENTOSTableAdapter.ClearBeforeFill = True
         '
-        'FarmSAntonioVentasDataVTAMED
-        '
-        Me.FarmSAntonioVentasDataVTAMED.DataSetName = "FarmSAntonioVentasDataVTAMED"
-        Me.FarmSAntonioVentasDataVTAMED.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'MEDICAMENTOSBindingSource5
-        '
-        Me.MEDICAMENTOSBindingSource5.DataMember = "MEDICAMENTOS"
-        Me.MEDICAMENTOSBindingSource5.DataSource = Me.FarmSAntonioVentasDataVTAMED
-        '
         'MEDICAMENTOSTableAdapter1
         '
         Me.MEDICAMENTOSTableAdapter1.ClearBeforeFill = True
+        '
+        'ctpag
+        '
+        Me.ctpag.FormattingEnabled = True
+        Me.ctpag.Items.AddRange(New Object() {"EFECTIVO" & Global.Microsoft.VisualBasic.ChrW(9), "TARJETA DE DEBITO", "TARJETA DE CREDITO"})
+        Me.ctpag.Location = New System.Drawing.Point(127, 15)
+        Me.ctpag.MaxLength = 20
+        Me.ctpag.Name = "ctpag"
+        Me.ctpag.Size = New System.Drawing.Size(127, 21)
+        Me.ctpag.TabIndex = 22
         '
         'NewVenta
         '
@@ -576,6 +510,8 @@ Partial Class NewVenta
         Me.Text = "AgregarVentas"
         Me.Panel3.ResumeLayout(False)
         CType(Me.DataMedi, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.MEDICAMENTOSBindingSource5, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.FarmSAntonioVentasDataVTAMED, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.MEDICAMENTOSBindingSource4, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.FarmSAntonioVentasDataSet3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.MEDICAMENTOSBindingSource3, System.ComponentModel.ISupportInitialize).EndInit()
@@ -596,8 +532,6 @@ Partial Class NewVenta
         CType(Me.data1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.FarmSAntonioVentasDataSet2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PRODUCTOSBindingSource3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.FarmSAntonioVentasDataVTAMED, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.MEDICAMENTOSBindingSource5, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -605,12 +539,6 @@ Partial Class NewVenta
     Friend WithEvents Panel2 As Panel
     Friend WithEvents DataProd As DataGridView
     Friend WithEvents PRODUCTOSBindingSource As BindingSource
-    Friend WithEvents CVEPRODDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents NOMPDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents DESCRIPDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents PRECIOVTAPDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents EXISTENCIASPDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents ESTADODataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents addProd As Button
     Friend WithEvents btnre As Button
     Friend WithEvents Panel3 As Panel
@@ -634,7 +562,6 @@ Partial Class NewVenta
     Friend WithEvents ESTADODataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
     Friend WithEvents DataMedi As DataGridView
     Friend WithEvents MEDICAMENTOSBindingSource2 As BindingSource
-    Friend WithEvents ESTADODataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
     Friend WithEvents data2 As DataGridView
     Friend WithEvents panelTotal As Panel
     Friend WithEvents Label7 As Label
@@ -644,7 +571,6 @@ Partial Class NewVenta
     Friend WithEvents btnCoVta As Button
     Friend WithEvents Label4 As Label
     Friend WithEvents Label3 As Label
-    Friend WithEvents ctpag As TextBox
     Friend WithEvents totalvta As TextBox
     Friend WithEvents cvvta As TextBox
     Friend WithEvents Label5 As Label
@@ -676,4 +602,5 @@ Partial Class NewVenta
     Friend WithEvents FarmSAntonioVentasDataVTAMED As FarmSAntonioVentasDataVTAMED
     Friend WithEvents MEDICAMENTOSBindingSource5 As BindingSource
     Friend WithEvents MEDICAMENTOSTableAdapter1 As FarmSAntonioVentasDataVTAMEDTableAdapters.MEDICAMENTOSTableAdapter
+    Friend WithEvents ctpag As ComboBox
 End Class

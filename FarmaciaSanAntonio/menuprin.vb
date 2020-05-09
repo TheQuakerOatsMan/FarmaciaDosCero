@@ -264,7 +264,71 @@
     End Sub
 
     Private Sub AgregarVentaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AgregarVentaToolStripMenuItem.Click
-        confirmEmp.Show()
+        'esto fue lo que cambie'
+        ''confirmEmp.Show()
+
+        ban = New ADODB.Parameter
+        Dim clave As Integer
+        clave = 100
+        comanV = New ADODB.Command
+        With comanV
+            .CommandText = "VTAUTO"
+            .CommandType = CommandType.StoredProcedure
+            '.Parameters.Append(.CreateParameter("0", DataTypeEnum.adInteger, ParameterDirectionEnum.adParamInput, , Val(CVEPROV.Text))) ' sirve para un entero decimal o money para el tipo de dato fecha se busca como date y para el tipo de dato money se busca como currency'
+            .Parameters.Append(.CreateParameter("0", DataTypeEnum.adVarChar, ParameterDirectionEnum.adParamInput, 20, "EFECTIVO")) 'si te fijas puse efectivo por default, paraque pueda corrrer el poc'
+            .Parameters.Append(.CreateParameter("1", DataTypeEnum.adInteger, ParameterDirectionEnum.adParamInput, , claveUser))
+            .Parameters.Append(.CreateParameter("2", DataTypeEnum.adInteger, ParameterDirectionEnum.adParamOutput, , 0)) 'BANDERA val(nombredelcampo.Text)'
+            .ActiveConnection = conexionv
+            .Execute()
+            ban.Value = .Parameters(2).Value
+
+        End With
+        If ban.Value = 1 Then
+            MsgBox("EL TIPO DE PAGO NO DEBE DE ESTAR VACIO")
+        Else
+            If ban.Value = 2 Then
+                MsgBox("EL TIPO DE PAGO TIENE NUMEROS")
+            Else
+                If ban.Value = 3 Then
+                    MsgBox("LA CVE DEL EMPLEADO ESTA VACIA")
+                Else
+                    If ban.Value = 4 Then
+                        MsgBox("LA CVE DEL EMPLEADO NO EXISTE")
+                    Else
+                        If ban.Value = 5 Then
+                            MsgBox("ESTE EMPLEADO SE ENCUENTRA DADO DE BAJA")
+                        Else
+                            If ban.Value = 6 Then
+                                MsgBox("LAS VENTAS SOLO PUEDEN SER COBRADAs (REALIZADAS) POR LOS CAJEROS, ADMINSITRADORES O ENCARGADOS DE TIENDA")
+                            Else
+                                If ban.Value = 7 Then
+                                    MsgBox("USTED NO HA INICADO SESION, INICIELA")
+                                Else
+                                    consql = ("select max(cvevta) from ventas")
+                                    consultaV = New ADODB.Recordset
+                                    consultaV = conexionv.Execute(consql)
+                                    If Not consultaV.EOF Then
+                                        clave = consultaV.Fields(0).Value
+                                    End If
+                                    MsgBox("MODULO DE VENTAS")
+                                    NewVenta.ctNEmp.Text = Name
+                                    NewVenta.ctNEmp.Enabled = False
+                                    NewVenta.ctemp.Enabled = False
+                                    NewVenta.ctpag.Enabled = True
+                                    NewVenta.cvvta.Text = clave
+                                    'AGREGUE ESTAS DOS'
+                                    NewVenta.tpago = "EFECTIVO" 'este seria el valor por defecto'
+                                    NewVenta.ctpag.Text = "EFECTIVO"
+                                    clave = 0
+                                    NewVenta.Show()
+                                    Close()
+                                End If
+                            End If
+                        End If
+                    End If
+                End If
+            End If
+        End If
     End Sub
 
     Private Sub CONSULTASGRALToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CONSULTASGRALToolStripMenuItem.Click

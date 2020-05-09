@@ -37,13 +37,15 @@ Public Class Ventas_Gnral
             .CommandType = CommandType.StoredProcedure
             '.Parameters.Append(.CreateParameter("0", DataTypeEnum.adInteger, ParameterDirectionEnum.adParamInput, , Val(CVEPROV.Text))) ' sirve para un entero decimal o money para el tipo de dato fecha se busca como date y para el tipo de dato money se busca como currency'
             .Parameters.Append(.CreateParameter("0", DataTypeEnum.adInteger, ParameterDirectionEnum.adParamInput, , Val(comboV.SelectedItem)))
-            .Parameters.Append(.CreateParameter("1", DataTypeEnum.adVarChar, ParameterDirectionEnum.adParamInput, 21, tppag.SelectedItem))
+            .Parameters.Append(.CreateParameter("1", DataTypeEnum.adVarChar, ParameterDirectionEnum.adParamInput, 21, tppag.SelectedItem.ToString))
             .Parameters.Append(.CreateParameter("2", DataTypeEnum.adInteger, ParameterDirectionEnum.adParamInput, , claveUser))
             .Parameters.Append(.CreateParameter("3", DataTypeEnum.adInteger, ParameterDirectionEnum.adParamOutput, , 0)) 'BANDERA val(nombredelcampo.Text)'
             .ActiveConnection = conexionv
             .Execute()
             ban.Value = .Parameters(3).Value
-            If ban.Value = 1 Then
+
+        End With
+        If ban.Value = 1 Then
                 MsgBox("LA CVE DE LA VENTA NO PUEDE ESTAR VACIA")
             Else
                 If ban.Value = 2 Then
@@ -70,7 +72,6 @@ Public Class Ventas_Gnral
                 End If
             End If
 
-        End With
     End Sub
 
     Private Sub btnre3_Click_1(sender As Object, e As EventArgs) Handles btnre3.Click
@@ -100,7 +101,7 @@ Public Class Ventas_Gnral
     End Sub
     Public Sub llenar_data()
         consulta2 = New ADODB.Recordset
-        consulta2.Open("select medicamentos.cvemed, medicamentos.nomed, medicamentos.preciovtam, detvtamed.imgrect, detvtamed.cantvm from medicamentos inner join detvtamed on detvtamed.cvemed=medicamentos.cvemed where cvevta=" & CVEVTA.Text, modulo.conexionv)
+        consulta2.Open("select medicamentos.CVEMED, medicamentos.NOMED, medicamentos.PRECIOVTAM, detvtamed.IMGRECT, detvtamed.CANTVM from medicamentos inner join detvtamed on detvtamed.cvemed=medicamentos.cvemed where cvevta=" & CVEVTA.Text, modulo.conexionv)
         Dim ODA As New OleDb.OleDbDataAdapter
         Dim tb As New DataTable
         Dim ds As New DataSet
@@ -109,7 +110,7 @@ Public Class Ventas_Gnral
     End Sub
     Public Sub llenar_data2()
         consulta2 = New ADODB.Recordset
-        consulta2.Open("select productos.cveprod, productos.nomp, productos.preciovtap, detvtapro.cantvp from productos inner join detvtapro on detvtapro.cveprod=productos.cveprod where cvevta=" & CVEVTA.Text, modulo.conexionv)
+        consulta2.Open("select productos.CVEPROD, productos.NOMP, productos.PRECIOVTAP, detvtapro.CANTVP from productos inner join detvtapro on detvtapro.cveprod=productos.cveprod where cvevta=" & CVEVTA.Text, modulo.conexionv)
         Dim ODA As New OleDb.OleDbDataAdapter
         Dim tb As New DataTable
         Dim ds As New DataSet

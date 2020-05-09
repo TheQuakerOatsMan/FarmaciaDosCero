@@ -55,10 +55,12 @@
                                                 MsgBox("DETALLE EXITOSO")
                                                 'AÑADIR LOS CAMPOS QUE FALTAN'
                                                 cantvm.SelectedText = ""
+                                                ''NewVenta.cagadamed()
                                                 NewVenta.actualizardatos()
                                                 NewVenta.cargadatos()
                                                 NewVenta.Panel3.Enabled = True
                                                 NewVenta.btnCoVta.Enabled = True
+
                                                 Close()
                                             End If
                                         End If

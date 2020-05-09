@@ -1,9 +1,13 @@
 ﻿Public Class TodasCompras
     Private Sub TodasCompras_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'TODO: esta línea de código carga datos en la tabla 'FarmSAntonioComprasDataSet.COMPRAS' Puede moverla o quitarla según sea necesario.
-        Me.COMPRASTableAdapter1.Fill(Me.FarmSAntonioComprasDataSet.COMPRAS)
-        'TODO: esta línea de código carga datos en la tabla 'FarmSAntonioDataSet11.COMPRAS' Puede moverla o quitarla según sea necesario.
-        Me.COMPRASTableAdapter.Fill(Me.FarmSAntonioDataSet11.COMPRAS)
+        consultaC = New ADODB.Recordset
+        consultaC.Open("select * from COMPRAS order by CVECOMP", modulo.conexionc)
+        Dim ODA As New OleDb.OleDbDataAdapter
+        Dim tb As New DataTable
+        Dim ds As New DataSet
+        ODA.Fill(ds, modulo.consultaC, "Table1")
+        DataGridView1.DataSource = ds.Tables("Table1").DefaultView
+        menuprin.Enabled = False
         menuprin.Enabled = False
     End Sub
 

@@ -8,7 +8,8 @@
     Public consulta6 As Recordset 'para compras med'
     Public consulta7 As Recordset 'compras prod'
     Public consultaUser As Recordset
-    Public consultaV As Recordset 'cons de vtas'
+    Public consultaV As Recordset 'cons de vtas
+    Public consultaV2 As Recordset 'cons de vtas'
     Public consultaC As Recordset 'cons de compras'
     Public ban As ADODB.Parameter
     Public bande As ADODB.Parameter

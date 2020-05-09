@@ -24,37 +24,41 @@ Partial Class TodasCompras
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.COMPRASBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
+        Me.FarmSAntonioComprasDataSet = New FarmaciaSanAntonio.FarmSAntonioComprasDataSet()
         Me.salircomt = New System.Windows.Forms.Button()
-        Me.CVECOMPDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.TOTALCOMPDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.FECHACOMPDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.COMPRASBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.FarmSAntonioDataSet11 = New FarmaciaSanAntonio.FarmSAntonioDataSet11()
         Me.COMPRASTableAdapter = New FarmaciaSanAntonio.FarmSAntonioDataSet11TableAdapters.COMPRASTableAdapter()
-        Me.FarmSAntonioComprasDataSet = New FarmaciaSanAntonio.FarmSAntonioComprasDataSet()
-        Me.COMPRASBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
         Me.COMPRASTableAdapter1 = New FarmaciaSanAntonio.FarmSAntonioComprasDataSetTableAdapters.COMPRASTableAdapter()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.COMPRASBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.FarmSAntonioComprasDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.COMPRASBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.FarmSAntonioDataSet11, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.FarmSAntonioComprasDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.COMPRASBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'DataGridView1
         '
-        Me.DataGridView1.AutoGenerateColumns = False
         Me.DataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.CVECOMPDataGridViewTextBoxColumn, Me.TOTALCOMPDataGridViewTextBoxColumn, Me.FECHACOMPDataGridViewTextBoxColumn})
-        Me.DataGridView1.DataSource = Me.COMPRASBindingSource1
         Me.DataGridView1.Location = New System.Drawing.Point(8, 8)
-        Me.DataGridView1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.DataGridView1.Margin = New System.Windows.Forms.Padding(2)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.RowHeadersWidth = 62
         Me.DataGridView1.RowTemplate.Height = 28
         Me.DataGridView1.Size = New System.Drawing.Size(784, 347)
         Me.DataGridView1.TabIndex = 0
+        '
+        'COMPRASBindingSource1
+        '
+        Me.COMPRASBindingSource1.DataMember = "COMPRAS"
+        Me.COMPRASBindingSource1.DataSource = Me.FarmSAntonioComprasDataSet
+        '
+        'FarmSAntonioComprasDataSet
+        '
+        Me.FarmSAntonioComprasDataSet.DataSetName = "FarmSAntonioComprasDataSet"
+        Me.FarmSAntonioComprasDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'salircomt
         '
@@ -67,27 +71,6 @@ Partial Class TodasCompras
         Me.salircomt.TabIndex = 3
         Me.salircomt.Text = "SALIR"
         Me.salircomt.UseVisualStyleBackColor = False
-        '
-        'CVECOMPDataGridViewTextBoxColumn
-        '
-        Me.CVECOMPDataGridViewTextBoxColumn.DataPropertyName = "CVECOMP"
-        Me.CVECOMPDataGridViewTextBoxColumn.HeaderText = "CVECOMP"
-        Me.CVECOMPDataGridViewTextBoxColumn.MinimumWidth = 8
-        Me.CVECOMPDataGridViewTextBoxColumn.Name = "CVECOMPDataGridViewTextBoxColumn"
-        '
-        'TOTALCOMPDataGridViewTextBoxColumn
-        '
-        Me.TOTALCOMPDataGridViewTextBoxColumn.DataPropertyName = "TOTALCOMP"
-        Me.TOTALCOMPDataGridViewTextBoxColumn.HeaderText = "TOTALCOMP"
-        Me.TOTALCOMPDataGridViewTextBoxColumn.MinimumWidth = 8
-        Me.TOTALCOMPDataGridViewTextBoxColumn.Name = "TOTALCOMPDataGridViewTextBoxColumn"
-        '
-        'FECHACOMPDataGridViewTextBoxColumn
-        '
-        Me.FECHACOMPDataGridViewTextBoxColumn.DataPropertyName = "FECHACOMP"
-        Me.FECHACOMPDataGridViewTextBoxColumn.HeaderText = "FECHACOMP"
-        Me.FECHACOMPDataGridViewTextBoxColumn.MinimumWidth = 8
-        Me.FECHACOMPDataGridViewTextBoxColumn.Name = "FECHACOMPDataGridViewTextBoxColumn"
         '
         'COMPRASBindingSource
         '
@@ -103,16 +86,6 @@ Partial Class TodasCompras
         '
         Me.COMPRASTableAdapter.ClearBeforeFill = True
         '
-        'FarmSAntonioComprasDataSet
-        '
-        Me.FarmSAntonioComprasDataSet.DataSetName = "FarmSAntonioComprasDataSet"
-        Me.FarmSAntonioComprasDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'COMPRASBindingSource1
-        '
-        Me.COMPRASBindingSource1.DataMember = "COMPRAS"
-        Me.COMPRASBindingSource1.DataSource = Me.FarmSAntonioComprasDataSet
-        '
         'COMPRASTableAdapter1
         '
         Me.COMPRASTableAdapter1.ClearBeforeFill = True
@@ -125,14 +98,14 @@ Partial Class TodasCompras
         Me.ClientSize = New System.Drawing.Size(800, 450)
         Me.Controls.Add(Me.salircomt)
         Me.Controls.Add(Me.DataGridView1)
-        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Margin = New System.Windows.Forms.Padding(2)
         Me.Name = "TodasCompras"
         Me.Text = "TodasCompras"
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.COMPRASBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.FarmSAntonioComprasDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.COMPRASBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.FarmSAntonioDataSet11, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.FarmSAntonioComprasDataSet, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.COMPRASBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -141,9 +114,6 @@ Partial Class TodasCompras
     Friend WithEvents FarmSAntonioDataSet11 As FarmSAntonioDataSet11
     Friend WithEvents COMPRASBindingSource As BindingSource
     Friend WithEvents COMPRASTableAdapter As FarmSAntonioDataSet11TableAdapters.COMPRASTableAdapter
-    Friend WithEvents CVECOMPDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents TOTALCOMPDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents FECHACOMPDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents salircomt As Button
     Friend WithEvents FarmSAntonioComprasDataSet As FarmSAntonioComprasDataSet
     Friend WithEvents COMPRASBindingSource1 As BindingSource

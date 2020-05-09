@@ -106,24 +106,36 @@
                                                                         If ban.Value = 23 Then
                                                                             MsgBox("SESION NO INICIADA, INICIE UNA SESION PARA CONTINUAR")
                                                                         Else
-                                                                            consultaV = New ADODB.Recordset
-                                                                            consultaV = conexionv.Execute(consql)
-                                                                            If Not consultaV.EOF Then
-                                                                                clave = consultaV.Fields(0).Value
+                                                                            If ban.Value = 24 Then
+                                                                                MsgBox("EL DEPTO NO CONCUERDA CON EL PUESTO")
+                                                                            Else
+                                                                                If ban.Value = 25 Then
+                                                                                    MsgBox("EL DEPTO NO CONCUERDA CON EL PUESTO")
+                                                                                Else
+                                                                                    If ban.Value = 26 Then
+                                                                                        MsgBox("EL DEPTO NO CONCUERDA CON EL PUESTO")
+                                                                                    Else
+                                                                                        consultaV = New ADODB.Recordset
+                                                                                        consultaV = conexionv.Execute(consql)
+                                                                                        If Not consultaV.EOF Then
+                                                                                            clave = consultaV.Fields(0).Value
+                                                                                        End If
+                                                                                        MsgBox("La cve del empleado es: " & clave & " INSERCION CORRECTA")
+                                                                                        NOMEMP.Text = ""
+                                                                                        DIREMP.Text = ""
+                                                                                        CORREOEMP.Text = ""
+                                                                                        TELEMP.Text = ""
+                                                                                        EDADEMP.Text = ""
+                                                                                        PUESTO.Text = ""
+                                                                                        DEPTO.Text = ""
+                                                                                        USER.Text = ""
+                                                                                        PASS.Text = ""
+                                                                                        ACTIVO.Text = ""
+                                                                                        'AÑADIR LOS CAMPOS QUE FALTAN'
+                                                                                        clave = 0
+                                                                                    End If
+                                                                                End If
                                                                             End If
-                                                                            MsgBox("La cve del empleado es: " & clave & " INSERCION CORRECTA")
-                                                                            NOMEMP.Text = ""
-                                                                            DIREMP.Text = ""
-                                                                            CORREOEMP.Text = ""
-                                                                            TELEMP.Text = ""
-                                                                            EDADEMP.Text = ""
-                                                                            PUESTO.Text = ""
-                                                                            DEPTO.Text = ""
-                                                                            USER.Text = ""
-                                                                            PASS.Text = ""
-                                                                            ACTIVO.Text = ""
-                                                                            'AÑADIR LOS CAMPOS QUE FALTAN'
-                                                                            clave = 0
                                                                         End If
                                                                     End If
                                                                 End If

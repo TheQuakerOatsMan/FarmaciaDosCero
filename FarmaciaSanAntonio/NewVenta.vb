@@ -1,14 +1,27 @@
 ﻿Public Class NewVenta
+    'CREEE ESTAS NUEVAS DOS VARIABLES PARA EL TIPO Y LA CVE'
+    Friend clavevta As Integer
+    Friend tpago As String
 
     Private Sub AgregarVentas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'TODO: esta línea de código carga datos en la tabla 'FarmSAntonioVentasDataVTAMED.MEDICAMENTOS' Puede moverla o quitarla según sea necesario.
-        Me.MEDICAMENTOSTableAdapter1.Fill(Me.FarmSAntonioVentasDataVTAMED.MEDICAMENTOS)
-        'TODO: esta línea de código carga datos en la tabla 'FarmSAntonioVentasDataSet3.MEDICAMENTOS' Puede moverla o quitarla según sea necesario.
-        Me.MEDICAMENTOSTableAdapter.Fill(Me.FarmSAntonioVentasDataSet3.MEDICAMENTOS)
-        'TODO: esta línea de código carga datos en la tabla 'FarmSAntonioVentasDataSet2.PRODUCTOS' Puede moverla o quitarla según sea necesario.
-        Me.PRODUCTOSTableAdapter2.Fill(Me.FarmSAntonioVentasDataSet2.PRODUCTOS)
-        'TODO: esta línea de código carga datos en la tabla 'FarmSAntonioVentasDataSet1.PRODUCTOS' Puede moverla o quitarla según sea necesario.
-        Me.PRODUCTOSTableAdapter.Fill(Me.FarmSAntonioVentasDataSet1.PRODUCTOS)
+        'ESTO SE AGREGO NUEVO'
+        clavevta = Val(cvvta.Text)
+        'YA LO DE AQUI ES DEL DATAGRID'
+        'consultaV = New ADODB.Recordset
+        'consultaV.Open("select * from MEDICAMENTOS order by CVEMED", modulo.conexionv)
+        'Dim ODA As New OleDb.OleDbDataAdapter
+        'Dim tb As New DataTable
+        'Dim ds As New DataSet
+        'ODA.Fill(ds, modulo.consultaV, "Table1")
+        ' DataMed.DataSource = ds.Tables("Table1").DefaultView
+        'consultaV2 = New ADODB.Recordset
+        'consultaV2.Open("select * from PRODUCTOS order by CVEPROD", modulo.conexionv)
+        'Dim ODA2 As New OleDb.OleDbDataAdapter
+        'Dim tb2 As New DataTable
+        'Dim ds2 As New DataSet
+        'ODA2.Fill(ds2, modulo.consultaV2, "Table1")
+        'DataProd.DataSource = ds2.Tables("Table1").DefaultView'
+
 
         confirmEmp.Enabled = False
         confirmEmp.Visible = False
@@ -31,19 +44,37 @@
     End Sub
     Public Sub cargadatos()
         consulta2 = New ADODB.Recordset
-        consulta2.Open("select medicamentos.cvemed, medicamentos.nomed, medicamentos.preciovtam, detvtamed.imgrect, detvtamed.cantvm from medicamentos inner join detvtamed on detvtamed.cvemed=medicamentos.cvemed where cvevta=" & cvvta.Text, modulo.conexionv)
+        consulta2.Open("select medicamentos.CVEMED, medicamentos.NOMED, medicamentos.PRECIOVTAM, detvtamed.IMGRECT, detvtamed.CANTVM from medicamentos inner join detvtamed on detvtamed.cvemed=medicamentos.cvemed where cvevta=" & cvvta.Text, modulo.conexionv)
         Dim ODA As New OleDb.OleDbDataAdapter
         Dim tb As New DataTable
         Dim ds As New DataSet
         ODA.Fill(ds, modulo.consulta2, "Table1")
         data1.DataSource = ds.Tables("Table1").DefaultView
         consulta3 = New ADODB.Recordset
-        consulta3.Open("select productos.cveprod, productos.nomp, productos.preciovtap, detvtapro.cantvp from productos inner join detvtapro on detvtapro.cveprod=productos.cveprod where cvevta=" & cvvta.Text, modulo.conexionv)
+        consulta3.Open("select productos.CVEPROD, productos.NOMP, productos.PRECIOVTAP, detvtapro.CANTVP from productos inner join detvtapro on detvtapro.cveprod=productos.cveprod where cvevta=" & cvvta.Text, modulo.conexionv)
         Dim ODA2 As New OleDb.OleDbDataAdapter
         Dim tb2 As New DataTable
         Dim ds2 As New DataSet
         ODA.Fill(ds2, modulo.consulta3, "Table1")
         data2.DataSource = ds2.Tables("Table1").DefaultView
+    End Sub
+    Public Sub cagadamed()
+        consultaV = New ADODB.Recordset
+        consultaV.Open("select * from MEDICAMENTOS order by CVEMED", modulo.conexionv)
+        Dim ODA As New OleDb.OleDbDataAdapter
+        Dim tb As New DataTable
+        Dim ds As New DataSet
+        ODA.Fill(ds, modulo.consultaV, "Table1")
+        DataMedi.DataSource = ds.Tables("Table1").DefaultView
+    End Sub
+    Public Sub cargadaprod()
+        consultaV2 = New ADODB.Recordset
+        consultaV2.Open("select * from PRODUCTOS order by CVEPROD", modulo.conexionv)
+        Dim ODA2 As New OleDb.OleDbDataAdapter
+        Dim tb2 As New DataTable
+        Dim ds2 As New DataSet
+        ODA2.Fill(ds2, modulo.consultaV, "Table1")
+        DataProd.DataSource = ds2.Tables("Table1").DefaultView
     End Sub
     Public Sub actualizardatos()
         Dim iva1 As Integer
@@ -59,6 +90,9 @@
             MsgBox("La cve de la venta esta vacia o no se encuentra")
         End If
         totalvta.Text = FormatCurrency(sub1 + iva1)
+        'ESTO PARA QUE CARGUE DE NUEVO LOS RESULTADOS DE LAS TABLAS, EN DADO CASO QUE HAYA COMPRADO EN UNA, SE HIZO ASI POR QUE 
+        'EN EL OTRO CASO TENGO QUE CONDICIONAR, ESTO SACRIFICA MEMORIA, PERO COMO QUIERAS WE SI QUIERES PONLE UNA CONICION'
+
 
     End Sub
 
@@ -134,6 +168,7 @@
         btnCancel.Enabled = True
         data1.Enabled = True
         data2.Enabled = True
+        ctpag.Enabled = True 'pa que cambie'
     End Sub
     Public Sub deshabilita()
         cvvta.Enabled = False
@@ -146,15 +181,31 @@
         btnCancel.Enabled = False
         data1.Enabled = False
         data2.Enabled = False
+        ctpag.Enabled = False 'pa que cambie'
     End Sub
 
     Private Sub btnadd_Click_1(sender As Object, e As EventArgs) Handles btnadd.Click
         Panel2.Visible = True
+        consultaV2 = New ADODB.Recordset
+        consultaV2.Open("select * from PRODUCTOS order by CVEPROD", modulo.conexionv)
+        Dim ODA2 As New OleDb.OleDbDataAdapter
+        Dim tb2 As New DataTable
+        Dim ds2 As New DataSet
+        ODA2.Fill(ds2, modulo.consultaV2, "Table1")
+        DataProd.DataSource = ds2.Tables("Table1").DefaultView
         deshabilita()
     End Sub
 
     Private Sub addm_Click_1(sender As Object, e As EventArgs) Handles addm.Click
+
         Panel3.Visible = True
+        consultaV = New ADODB.Recordset
+        consultaV.Open("select * from MEDICAMENTOS order by CVEMED", modulo.conexionv)
+        Dim ODA As New OleDb.OleDbDataAdapter
+        Dim tb As New DataTable
+        Dim ds As New DataSet
+        ODA.Fill(ds, modulo.consultaV, "Table1")
+        DataMedi.DataSource = ds.Tables("Table1").DefaultView
         deshabilita()
     End Sub
 
@@ -198,7 +249,66 @@
     End Sub
 
     Private Sub btnCoVta_Click_1(sender As Object, e As EventArgs) Handles btnCoVta.Click
+
+        'ESTA PARTE LA CHECAS SI LA DEJAMOS ASI O NO, LO QUE PASA ES QUE PODRIA QUEDAR ASI POR SI LA DOÑA LAHACE DE PEDO POR QUE NO
+        '"ES FUNCIONAL" Y ASI ENTONCES POR ESO LO MODIFICQUE'
+
+        If (ctpag.SelectedItem = 0) Then
+            MsgBox("La cve del la venta es: " & clavevta & " INSERCION CORRECTA")
+        Else
+            If (tpago = ctpag.SelectedItem.ToString) Then 'AQUI ME DICE SI SE QUEDO EN EFECTIVO O NEL'
+                MsgBox("La cve del la venta es: " & clavevta & " INSERCION CORRECTA")
+            Else
+                ban = New ADODB.Parameter
+                comanV = New ADODB.Command
+                With comanV
+                    .CommandText = "MODTIPOPAG"
+                    .CommandType = CommandType.StoredProcedure
+                    '.Parameters.Append(.CreateParameter("0", DataTypeEnum.adInteger, ParameterDirectionEnum.adParamInput, , Val(CVEPROV.Text))) ' sirve para un entero decimal o money para el tipo de dato fecha se busca como date y para el tipo de dato money se busca como currency'
+                    .Parameters.Append(.CreateParameter("0", DataTypeEnum.adInteger, ParameterDirectionEnum.adParamInput, , Val(cvvta.Text)))
+                    .Parameters.Append(.CreateParameter("1", DataTypeEnum.adVarChar, ParameterDirectionEnum.adParamInput, 21, ctpag.SelectedItem.ToString))
+                    .Parameters.Append(.CreateParameter("2", DataTypeEnum.adInteger, ParameterDirectionEnum.adParamInput, , claveUser))
+                    .Parameters.Append(.CreateParameter("3", DataTypeEnum.adInteger, ParameterDirectionEnum.adParamOutput, , 0)) 'BANDERA val(nombredelcampo.Text)'
+                    .ActiveConnection = conexionv
+                    .Execute()
+                    ban.Value = .Parameters(3).Value
+                End With
+
+                If ban.Value = 1 Then
+                    MsgBox("LA CVE DE LA VENTA NO PUEDE ESTAR VACIA")
+                Else
+                    If ban.Value = 2 Then
+                        MsgBox("EL TIPO DE PAGO NO DEBE DE ESTAR VACIO")
+                    Else
+                        If ban.Value = 3 Then
+                            MsgBox("EL TIPO DE PAGO TIENE NUMEROS")
+                        Else
+                            If ban.Value = 4 Then
+                                MsgBox("EL TIPO DE PAGO EXCEDE EL RANGO")
+                            Else
+                                If ban.Value = 5 Then
+                                    MsgBox("ESTA VENTA NO SE ENCUENTRA REGISTRADA")
+                                Else
+                                    If ban.Value = 6 Then
+                                        MsgBox("SESION NO INICIADA, INICIE UNA SESION PARA CONTINUAR")
+                                    Else
+                                        MsgBox("TIPO DE PAGO ACTUALIZADO")
+
+                                    End If
+                                End If
+                            End If
+                        End If
+                    End If
+                End If
+                MsgBox("La cve del la venta es: " & clavevta & " INSERCION CORRECTA")
+            End If
+
+        End If
         MessageBox.Show("VENTA REALIZADA CON EXITO")
+
+        'CHECA SI SE LA DEJAS ESTOS CAMBIOS A VER QUE
+        'DICES Y SI NO, LO DEJAMOS COMO ESTABA ANTERIORMENTE '
+
         menuprin.Enabled = True
         menuprin.Visible = True
         Close()

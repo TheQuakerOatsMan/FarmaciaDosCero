@@ -389,29 +389,33 @@ End If
                                                                                         If ban.Value = 25 Then
                                                                                             MsgBox("EL DEPTO NO CONCUERDA CON EL PUESTO")
                                                                                         Else
-                                                                                            If ban.Value = 26 Then
-                                                                                                MsgBox("EL USUARIO NO TIENE UNA SESION INICIADA, CIERRE ESA SESION PARA TERMINAR")
+                                                                                            If ban.Value = 27 Then
+                                                                                                MsgBox("EL DEPTO NO CONCUERDA CON EL PUESTO")
                                                                                             Else
-                                                                                                MsgBox("EMPLEADO ACTUALIZADO")
-                                                                                                NOMEMP.Enabled = False
-                                                                                                DIREMP.Enabled = False
-                                                                                                TELEMP.Enabled = False
-                                                                                                CORREOEMP.Enabled = False
-                                                                                                EDADEMP.Enabled = False
-                                                                                                PUESTO.Enabled = False
-                                                                                                DEPTO.Enabled = False
+                                                                                                If ban.Value = 26 Then
+                                                                                                    MsgBox("EL USUARIO NO TIENE UNA SESION INICIADA, CIERRE ESA SESION PARA TERMINAR")
+                                                                                                Else
+                                                                                                    MsgBox("EMPLEADO ACTUALIZADO")
+                                                                                                    NOMEMP.Enabled = False
+                                                                                                    DIREMP.Enabled = False
+                                                                                                    TELEMP.Enabled = False
+                                                                                                    CORREOEMP.Enabled = False
+                                                                                                    EDADEMP.Enabled = False
+                                                                                                    PUESTO.Enabled = False
+                                                                                                    DEPTO.Enabled = False
+                                                                                                End If
                                                                                             End If
                                                                                         End If
                                                                                     End If
                                                                                 End If
                                                                             End If
                                                                         End If
-                                                                    End If
 
+                                                                    End If
                                                                 End If
                                                             End If
-                                                        End If
 
+                                                        End If
                                                     End If
                                                 End If
                                             End If

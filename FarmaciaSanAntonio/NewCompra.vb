@@ -41,15 +41,31 @@
 
 
     Public Sub cargadatos()
+        'SE AGREGO ESTO PARA QUE SE ACTUALIZARA MAN'
+        consulta6 = New ADODB.Recordset
+        consulta6.Open("select * from medicamentos order by cvemed", modulo.conexionc)
+        Dim ODAcM As New OleDb.OleDbDataAdapter
+        Dim tb3 As New DataTable
+        Dim ds3 As New DataSet
+        ODAcM.Fill(ds3, modulo.consulta6, "Table1")
+        Medicamentos.DataSource = ds3.Tables("Table1").DefaultView
+        consulta7 = New ADODB.Recordset
+        consulta7.Open("select * from productos order by cveprod", modulo.conexionc)
+        Dim ODAcP As New OleDb.OleDbDataAdapter
+        Dim tb4 As New DataTable
+        Dim ds4 As New DataSet
+        ODAcP.Fill(ds4, modulo.consulta7, "Table1")
+        Productos.DataSource = ds4.Tables("Table1").DefaultView
+        'fin de la llamada'
         consulta2 = New ADODB.Recordset
-        consulta2.Open("select medicamentos.cvemed, medicamentos.nomed, medicamentos.preciovtam, detcommed.cantcompm from medicamentos inner join detcommed on detcommed.cvemed=medicamentos.cvemed where cvecomp=" & cvcomp.Text, modulo.conexionc)
+        consulta2.Open("select medicamentos.CVEMED, medicamentos.NOMED, medicamentos.PRECIOCOMPM, detcommed.CANTCOMPM from medicamentos inner join detcommed on detcommed.cvemed=medicamentos.cvemed where cvecomp=" & cvcomp.Text, modulo.conexionc)
         Dim ODA As New OleDb.OleDbDataAdapter
         Dim tb As New DataTable
         Dim ds As New DataSet
         ODA.Fill(ds, modulo.consulta2, "Table1")
         data1.DataSource = ds.Tables("Table1").DefaultView
         consulta3 = New ADODB.Recordset
-        consulta3.Open("select productos.cveprod, productos.nomp, productos.PRECIOCOMP, DETCOMPRO.CANTCOMP from productos inner join DETCOMPRO on DETCOMPRO.cveprod=productos.cveprod where cvecomp=" & cvcomp.Text, modulo.conexionc)
+        consulta3.Open("select productos.CVEPROD, productos.NOMP, productos.PRECIOCOMP, DETCOMPRO.CANTCOMP from productos inner join DETCOMPRO on DETCOMPRO.cveprod=productos.cveprod where cvecomp=" & cvcomp.Text, modulo.conexionc)
         Dim ODA2 As New OleDb.OleDbDataAdapter
         Dim tb2 As New DataTable
         Dim ds2 As New DataSet
@@ -108,7 +124,7 @@
         Dim ds4 As New DataSet
         ODAcP.Fill(ds4, modulo.consulta7, "Table1")
         Productos.DataSource = ds4.Tables("Table1").DefaultView
-
+        btnReComp.Enabled = False
 
         Productos.Enabled = False
         Productos.Visible = False
